@@ -128,7 +128,7 @@ PyQt5==5.15.7
 PyQt5-sip 
 pyrsistent 
 PySocks
-pysurvival==0.2.1
+pysurvival==0.1.2
 python-dateutil 
 pytz 
 pytz-deprecation-shim==0.1.0.post0
