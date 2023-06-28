@@ -132,7 +132,7 @@ pysurvival==0.1.2
 python-dateutil 
 pytz 
 pytz-deprecation-shim==0.1.0.post0
-pywin32==302
+pywin32
 pywinpty
 pyzmq 
 pyzstd==0.15.3
