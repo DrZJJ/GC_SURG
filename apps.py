@@ -6,14 +6,14 @@ from pysurvival.utils import load_model
 
 st.set_page_config(layout="wide")
 
-@st.cache(show_spinner=False)
+@st.cache_data(show_spinner=False)
 def load_setting():
     settings = {
         'Age': {'values': ["20-69", "70+"], 'type': 'selectbox', 'init_value': 0, 'add_after': ', year'},
         'Sex': {'values': ["Male", "Female"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Marital status': {'values': ["Married", "Unmarried"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Race recode': {'values': ["American Indian/Alaska Native", "Asian or Pacific Islander", "Black", "White"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
-        'Primary Site': {'values': ["C16.0", "C16.1", "C16.2", "C16.3", "C16.4", "C16.5", "C16.6", "C16.8", "C16.9"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
+        'Primary Site': {'values': ["Cardia/Fundus", "Body/antrum/pylorus/Lesser/Greater", "Overlapping/Unspecified"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Grade': {'values': ["Well differentiated or Moderately differentiated", "Poorly differentiated or Undifferentiated"],
              'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Summary stage': {'values': ["Distant", "Localized", "Regional"],
@@ -25,15 +25,14 @@ def load_setting():
         'Radiation': {'values': ["Yes", "No"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Chemotherapy recode': {'values': ["Yes", "No"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Tumor size': {'values': ["< 5", "5 +"], 'type': 'selectbox', 'init_value': 0, 'add_after': ', cm'},
-        'Regional nodes examined ': {'values': [0, 150], 'type': 'slider', 'init_value': 75, 'add_after': ''},
-        'Regional nodes positive ': {'values': [0, 100], 'type': 'slider', 'init_value': 50, 'add_after': ''},
+        'Regional nodes examined ': {'values': ["<30", "30 +"], 'type': 'selectbox', 'init_value': 0, 'add_after': ''},
         'Lymph node metastasis rate': {'values': ["0", "<30", "30-70", ">70"], 'type': 'selectbox',
                                'init_value': 0,
                                'add_after': '%'},
         
     }
     input_keys = ['Age', 'Sex', 'Marital status', 'Race recode', 'Primary Site',
-       'Grade', 'Summary stage', 'T stage', 'N stage', 'M stage', 'AJCC stage', 'Radiation', 'Chemotherapy recode', 'Tumor size', 'Regional nodes examined ','Regional nodes positive ', 'Lymph node metastasis rate']
+       'Grade', 'Summary stage', 'T stage', 'N stage', 'M stage', 'AJCC stage', 'Radiation', 'Chemotherapy recode', 'Tumor size', 'Regional nodes examined ', 'Lymph node metastasis rate']
     return settings, input_keys
 
 
@@ -206,13 +205,13 @@ def plot_below_header():
     st.write('')
     st.write('')
 
-st.header('DeepSurv-based model for predicting survival of Gastric adenocarcinoma', anchor='survival-of-Gastric adenocarcinoma')
+st.header('User-Friendly Interface of DeepSurv Model, Which Facilitates Survival Prediction for the Postoperative Prognosis of Gastric Cancer', anchor='survival-of-Gastric adenocarcinoma')
 if st.session_state['patients']:
     plot_below_header()
 st.subheader("Instructions:")
 st.write("1. Select patient's infomation on the left\n2. Press predict button\n3. The model will generate predictions")
 st.write('***Note: this model is still a research subject, and the accuracy of the results cannot be guaranteed!***')
-st.write("***[Paper link](https://pubmed.ncbi.nlm.nih.gov/)(To be updated)***")
+st.write("***     ***")
 with st.sidebar:
     with st.form("my_form",clear_on_submit = False):
         for code in sidebar_code:
